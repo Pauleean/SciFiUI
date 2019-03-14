@@ -29,7 +29,7 @@ public class Radar
         ui.stroke(255);
         ui.noFill();
         ui.ellipse(x, y, width, height);
-        ui.line(x, y, x + (wRad * ui.sin(rotation)), y + (hRad * ui.cos(rotation)));
+        ui.line(x, y, x + (wRad * (float)Math.sin(rotation)), y - (hRad * (float)Math.cos(rotation)));
     }
 
     public void update()
