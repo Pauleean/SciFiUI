@@ -7,7 +7,7 @@ public class UI extends PApplet
     Button b;
     MovingCircle mc;
     Radar r;
-    Scanner s;
+    Scanner scanner;
     boolean mouseDown;
 
     boolean[] keys = new boolean[1024];
@@ -40,7 +40,6 @@ public class UI extends PApplet
         b = new Button(this, 50, 50, 100, 50, "I am a button");
         mc = new MovingCircle(this, width / 2, height / 2, 50);
         r = new Radar(this, width/2, height/2, 350, 50, 0.1f, 0);
-        s = new Scanner(this, 100);
         colorMode(HSB);
     }
 
@@ -55,11 +54,11 @@ public class UI extends PApplet
         r.update();
         r.render();
         
-        if(mouseDown)
+        if(scanner != null)
         {
-            s.update(mouseX, mouseY, "a", 4);
+            scanner.update(mouseX, mouseY, 4);
+            scanner.render();
         }
-        s.render();
 
         if (checkKey(LEFT))
         {
@@ -69,13 +68,17 @@ public class UI extends PApplet
 
     public void mousePressed()
     {
-        mouseDown = true;
+        scanner = new Scanner(this, 100, mouseX, mouseY, "Iron");
     }
 
     public void mouseClicked()
     {
         mouseDown = false;
-        s.end();
+    }
+
+    public void scanComp(Scanner s)
+    {
+        scanner = null;
     }
 }
 
