@@ -2,6 +2,8 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 import processing.core.PApplet;
+import processing.data.Table;
+import processing.data.TableRow;
 
 public class UI extends PApplet {
     Scanner scanner;
@@ -39,7 +41,16 @@ public class UI extends PApplet {
         location = new Location(this, height, width);
         strokeWeight(3);
         
-        Planet P1 = new Planet(this, 100, 650, 90, loadImage("Planet1.png"));
+        Table table = loadTable("Planets.csv", "header");
+
+        for(TableRow row : table.rows())
+        {
+            Planet planet = new Planet(this, row);
+            Objects.add(planet);
+        }
+
+
+        /*Planet P1 = new Planet(this, 100, 650, 90, loadImage("Planet1.png"));
         Planet P2 = new Planet(this, 80, 350, 190, loadImage("Planet2.png"));
         Planet P3 = new Planet(this, 150, 1000, 40, loadImage("Planet3.png"));
         Planet P4 = new Planet(this, 70, 500, 300, loadImage("Planet4.png"));
@@ -49,7 +60,7 @@ public class UI extends PApplet {
         Objects.add(P2);
         Objects.add(P3);
         Objects.add(P4);
-        Objects.add(P5);
+        Objects.add(P5);*/
     }
 
     public void draw()

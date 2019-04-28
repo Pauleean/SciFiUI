@@ -1,0 +1,6 @@
+﻿Image,name,size,x,y,mass,iron,gold,uranium,water,temp,life,atmosphere
+Planet1.png,Hadrian,100,650,90,2.104,2.036,0.569,0.103,0,346.038,none,toxic
+Planet2.png,Arkanna,80,350,190,0.973,23.056,24.689,10.456,2.352,456.356,none,toxic
+Planet3.png,Zeconis 10,150,1000,40,5.897,10.459,14.651,0.105,30.572,205.764,primative,breathable
+Planet4.png,Pallavia,70,500,300,0.648,40.341,10.054,0.021,10.764,298.456,none,negligible
+Planet5.png,Indri 7,200,810,300,8.566,20.451,13.569,0.051,15.783,134.768,trace,toxic

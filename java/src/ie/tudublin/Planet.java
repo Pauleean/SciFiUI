@@ -1,6 +1,7 @@
 package ie.tudublin;
 
 import processing.core.PImage;
+import processing.data.TableRow;
 
 public class Planet extends DisplayObject
 {
@@ -14,13 +15,22 @@ public class Planet extends DisplayObject
     String atmosphere;
     float temp;
     String life;
-    String water;
+    float water;
     float counter;
 
-    public Planet(UI ui, float size, float x, float y, PImage img)
+    public Planet(UI ui, TableRow data)
     {
-        super(ui, size, x, y);
-        this.img = img;
+        super(ui, data.getFloat("size"), data.getFloat("x"), data.getFloat("y"));
+        this.name = data.getString("name");
+        this.mass = data.getFloat("mass");
+        this.iron = data.getFloat("iron");
+        this.gold = data.getFloat("gold");
+        this.uranium = data.getFloat("uranium");
+        this.water = data.getFloat("water");
+        this.temp = data.getFloat("temp");
+        this. life = data.getString("life");
+        this. atmosphere = data.getString("atmosphere");
+        img = ui.loadImage(data.getString("Image"));
         scaned = false;
         counter = 0;
     }
@@ -76,5 +86,159 @@ public class Planet extends DisplayObject
      */
     public void setImg(PImage img) {
         this.img = img;
+    }
+
+    /**
+     * @return the scaned
+     */
+    public boolean isScaned() {
+        return scaned;
+    }
+
+    /**
+     * @param scaned the scaned to set
+     */
+    public void setScaned(boolean scaned) {
+        this.scaned = scaned;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the mass
+     */
+    public float getMass() {
+        return mass;
+    }
+
+    /**
+     * @param mass the mass to set
+     */
+    public void setMass(float mass) {
+        this.mass = mass;
+    }
+
+    /**
+     * @return the iron
+     */
+    public float getIron() {
+        return iron;
+    }
+
+    /**
+     * @param iron the iron to set
+     */
+    public void setIron(float iron) {
+        this.iron = iron;
+    }
+
+    /**
+     * @return the gold
+     */
+    public float getGold() {
+        return gold;
+    }
+
+    /**
+     * @param gold the gold to set
+     */
+    public void setGold(float gold) {
+        this.gold = gold;
+    }
+
+    /**
+     * @return the uranium
+     */
+    public float getUranium() {
+        return uranium;
+    }
+
+    /**
+     * @param uranium the uranium to set
+     */
+    public void setUranium(float uranium) {
+        this.uranium = uranium;
+    }
+
+    /**
+     * @return the atmosphere
+     */
+    public String getAtmosphere() {
+        return atmosphere;
+    }
+
+    /**
+     * @param atmosphere the atmosphere to set
+     */
+    public void setAtmosphere(String atmosphere) {
+        this.atmosphere = atmosphere;
+    }
+
+    /**
+     * @return the temp
+     */
+    public float getTemp() {
+        return temp;
+    }
+
+    /**
+     * @param temp the temp to set
+     */
+    public void setTemp(float temp) {
+        this.temp = temp;
+    }
+
+    /**
+     * @return the life
+     */
+    public String getLife() {
+        return life;
+    }
+
+    /**
+     * @param life the life to set
+     */
+    public void setLife(String life) {
+        this.life = life;
+    }
+
+    /**
+     * @return the water
+     */
+    public Float getWater() {
+        return water;
+    }
+
+    /**
+     * @param water the water to set
+     */
+    public void setWater(Float water) {
+        this.water = water;
+    }
+
+    /**
+     * @return the counter
+     */
+    public float getCounter() {
+        return counter;
+    }
+
+    /**
+     * @param counter the counter to set
+     */
+    public void setCounter(float counter) {
+        this.counter = counter;
     }
 }
