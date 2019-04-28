@@ -1,27 +1,28 @@
 package ie.tudublin;
 
+import processing.core.PImage;
+
 public class Location
 {
     UI ui;
     int height;
     int width;
+    PImage Stars;
+    PImage Sun;
 
     public Location(UI ui, int height, int width)
     {
         this.ui = ui;
         this.height = height;
         this.width = width;
+        Stars = ui.loadImage("Stars.png");
+        Sun = ui.loadImage("Sun.png");
     }
 
     public void drawMainScreen()
     {
-        ui.line(0, 0, 100, 100);
-        /*for(int i=0; i<height/1.5f; i+=3)
-        {
-            float B = UI.map(i, 0, height/1.5f, 255, 0);
-            ui.stroke(205, 200, B);
-            ui.line(0, i, ui.width, i);
-        }*/
+        ui.image(Stars, 0, 0, 1200, 600);
+        ui.image(Sun, 0, 0, 150, 150);
     }
 
     /**
