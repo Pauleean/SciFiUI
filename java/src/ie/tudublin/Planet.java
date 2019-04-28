@@ -23,11 +23,6 @@ public class Planet extends DisplayObject
         this.img = img;
         scaned = false;
         counter = 0;
-        name = "blah";
-        mass = 0;
-        iron = 1;
-        gold = 2;
-        uranium = 3;
     }
 
     public void render()
@@ -63,7 +58,7 @@ public class Planet extends DisplayObject
 
     public void update()
     {
-        if(counter < 5)
+        if(scaned && counter < 5)
         {
             counter += 1/60.0f;
         }
