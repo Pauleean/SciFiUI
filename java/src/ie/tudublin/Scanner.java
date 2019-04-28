@@ -74,4 +74,74 @@ public class Scanner extends DisplayObject
     {
         ui.scanComp(this);
     }
+
+    /**
+     * @return the time
+     */
+    public float getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(float time) {
+        this.time = time;
+    }
+
+    /**
+     * @return the percent
+     */
+    public float getPercent() {
+        return percent;
+    }
+
+    /**
+     * @param percent the percent to set
+     */
+    public void setPercent(float percent) {
+        this.percent = percent;
+    }
+
+    /**
+     * @return the dispTime
+     */
+    public float getDispTime() {
+        return dispTime;
+    }
+
+    /**
+     * @param dispTime the dispTime to set
+     */
+    public void setDispTime(float dispTime) {
+        this.dispTime = dispTime;
+    }
+
+    /**
+     * @return the mat
+     */
+    public String getMat() {
+        return mat;
+    }
+
+    /**
+     * @param mat the mat to set
+     */
+    public void setMat(String mat) {
+        this.mat = mat;
+    }
+
+    /**
+     * @return the scan
+     */
+    public boolean isScan() {
+        return scan;
+    }
+
+    /**
+     * @param scan the scan to set
+     */
+    public void setScan(boolean scan) {
+        this.scan = scan;
+    }
 }

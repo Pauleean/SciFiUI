@@ -5,13 +5,10 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class UI extends PApplet {
-    Button b;
-    MovingCircle mc;
-    Radar r;
     Scanner scanner;
     Location location;
     boolean mouseDown;
-    ArrayList<PImage> Planets = new ArrayList<PImage>();
+    ArrayList<DisplayObject> Objects = new ArrayList<DisplayObject>();
 
     boolean[] keys = new boolean[1024];
 
@@ -33,7 +30,7 @@ public class UI extends PApplet {
 
     public void settings()
     {
-        size(800, 800);
+        size(1200, 600);
         // Use fullscreen instead of size to make your interface fullscreen
         //fullScreen(); 
     }
@@ -43,16 +40,29 @@ public class UI extends PApplet {
         location = new Location(this, height, width);
         strokeWeight(3);
         
-        for(int i=1; i<6; i++)
-        {
-            
-        }
+        Planet P1 = new Planet(this, 100, 650, 90, loadImage("Planet1.png"));
+        Planet P2 = new Planet(this, 80, 350, 190, loadImage("Planet2.png"));
+        Planet P3 = new Planet(this, 150, 1000, 40, loadImage("Planet3.png"));
+        Planet P4 = new Planet(this, 70, 500, 300, loadImage("Planet4.png"));
+        Planet P5 = new Planet(this, 200, 810, 300, loadImage("Planet5.png"));
+
+        Objects.add(P1);
+        Objects.add(P2);
+        Objects.add(P3);
+        Objects.add(P4);
+        Objects.add(P5);
     }
 
     public void draw()
     {
         background(0);
         location.drawMainScreen();
+
+
+        for(int i = Objects.size()-1; i>-1; i--)
+        {
+            Objects.get(i).render();
+        }
         
         if(scanner != null)
         {
