@@ -22,7 +22,7 @@ public class Location
     public void drawMainScreen()
     {
         ui.image(Stars, 0, 0, 1200, 600);
-        ui.image(Sun, 0, 0, 150, 150);
+        ui.image(Sun, 0, 0, 250, 250);
     }
 
     /**
