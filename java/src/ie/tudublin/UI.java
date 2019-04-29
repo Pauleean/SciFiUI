@@ -85,6 +85,12 @@ public class UI extends PApplet {
                     Scanner scanner = new Scanner(this, rad, pos.x+rad, pos.y+rad, planet);
                     Objects.add(scanner);
                 }
+
+                if(planet.isScaned())
+                {
+                    String[] a = {"UI"};
+                    processing.core.PApplet.runSketch(a, new OrbitalView(planet));
+                }
             }
         }
     }
