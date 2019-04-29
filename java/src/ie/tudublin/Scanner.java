@@ -54,20 +54,19 @@ public class Scanner extends DisplayObject
         {
             ui.text(mat, pos.x, pos.y);
         }
-
-        if(dispTime <= 0) end();
     }
 
-    public void update(float x, float y,  float time)
+    public void update()
     {
         if(percent < 100)
         {
-            percent = percent + ((100/time)/60.0f);
+            percent = percent + (25/60.0f);
         }
         else
         {
             dispTime -= 1/60.0f;
         }
+        if(dispTime <= 0) end();
     }
 
     public void end()

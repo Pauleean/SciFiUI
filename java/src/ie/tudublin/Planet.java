@@ -62,8 +62,6 @@ public class Planet extends DisplayObject
         {
             ui.text(uranium, pos.x - 10, pos.y + (4*offset));
         }
-
-        update();
     }
 
     public void update()

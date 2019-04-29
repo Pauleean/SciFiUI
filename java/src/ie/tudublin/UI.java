@@ -2,6 +2,7 @@ package ie.tudublin;
 
 import java.util.ArrayList;
 import processing.core.PApplet;
+import processing.core.PVector;
 import processing.data.Table;
 import processing.data.TableRow;
 
@@ -10,6 +11,7 @@ public class UI extends PApplet {
     Location location;
     boolean mouseDown;
     ArrayList<DisplayObject> Objects = new ArrayList<DisplayObject>();
+    ArrayList<Planet> Planets = new ArrayList<Planet>();
 
     boolean[] keys = new boolean[1024];
 
@@ -47,6 +49,7 @@ public class UI extends PApplet {
         {
             Planet planet = new Planet(this, row);
             Objects.add(planet);
+            Planets.add(planet);
         }
     }
 
@@ -59,12 +62,7 @@ public class UI extends PApplet {
         for(int i = Objects.size()-1; i>-1; i--)
         {
             Objects.get(i).render();
-        }
-        
-        if(scanner != null)
-        {
-            scanner.update(mouseX, mouseY, 4);
-            scanner.render();
+            Objects.get(i).update();
         }
 
         if (checkKey(LEFT))
@@ -75,7 +73,16 @@ public class UI extends PApplet {
 
     public void mousePressed()
     {
-        scanner = new Scanner(this, 100, mouseX, mouseY, "Iron");
+        for(Planet planet:Planets)
+        {
+            PVector pos = planet.getPos();
+            float rad = planet.getSize()/2.0f;
+            if(mouseX > pos.x && mouseX < pos.x+(2*rad) && mouseY > pos.y && mouseY < pos.y+(2*rad))
+            {
+                Scanner scanner = new Scanner(this, 100, pos.x+rad, pos.y+rad, "Iron");
+                Objects.add(scanner);
+            }
+        }
     }
 
     public void mouseClicked()
@@ -85,7 +92,7 @@ public class UI extends PApplet {
 
     public void scanComp(Scanner s)
     {
-        scanner = null;
+        Objects.remove(s);
     }
 }
 

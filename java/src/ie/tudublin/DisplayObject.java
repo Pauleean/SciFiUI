@@ -19,6 +19,9 @@ public class DisplayObject
     public void render()
     {}
 
+    public void update()
+    {}
+
     /**
      * @return the ui
      */
