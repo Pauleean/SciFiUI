@@ -17,6 +17,7 @@ public class Planet extends DisplayObject
     String life;
     float water;
     float counter;
+    boolean scanning;
 
     public Planet(UI ui, TableRow data)
     {
@@ -32,6 +33,7 @@ public class Planet extends DisplayObject
         this. atmosphere = data.getString("atmosphere");
         img = ui.loadImage(data.getString("Image"));
         scaned = false;
+        scanning = false;
         counter = 0;
     }
 
@@ -48,19 +50,19 @@ public class Planet extends DisplayObject
         ui.textAlign(UI.RIGHT);
         if(counter >= 2)
         {
-            ui.text(mass, pos.x - 10, pos.y + offset);
+            ui.text("Mass: " + mass + "M☉", pos.x - 10, pos.y + offset);
         }
         if(counter >= 3)
         {
-            ui.text(iron, pos.x - 10, pos.y + (2*offset));
+            ui.text("Iron: " + iron + "%", pos.x - 10, pos.y + (2*offset));
         }
         if(counter >= 4)
         {
-            ui.text(gold, pos.x - 10, pos.y + (3*offset));
+            ui.text("Gold: " + gold + "%", pos.x - 10, pos.y + (3*offset));
         }
         if(counter >= 5)
         {
-            ui.text(uranium, pos.x - 10, pos.y + (4*offset));
+            ui.text("Uranium: " + uranium + "%", pos.x - 10, pos.y + (4*offset));
         }
     }
 
@@ -238,5 +240,26 @@ public class Planet extends DisplayObject
      */
     public void setCounter(float counter) {
         this.counter = counter;
+    }
+
+    /**
+     * @param water the water to set
+     */
+    public void setWater(float water) {
+        this.water = water;
+    }
+
+    /**
+     * @return the scanning
+     */
+    public boolean isScanning() {
+        return scanning;
+    }
+
+    /**
+     * @param scanning the scanning to set
+     */
+    public void setScanning(boolean scanning) {
+        this.scanning = scanning;
     }
 }
