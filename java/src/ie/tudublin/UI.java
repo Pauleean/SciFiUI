@@ -48,19 +48,6 @@ public class UI extends PApplet {
             Planet planet = new Planet(this, row);
             Objects.add(planet);
         }
-
-
-        /*Planet P1 = new Planet(this, 100, 650, 90, loadImage("Planet1.png"));
-        Planet P2 = new Planet(this, 80, 350, 190, loadImage("Planet2.png"));
-        Planet P3 = new Planet(this, 150, 1000, 40, loadImage("Planet3.png"));
-        Planet P4 = new Planet(this, 70, 500, 300, loadImage("Planet4.png"));
-        Planet P5 = new Planet(this, 200, 810, 300, loadImage("Planet5.png"));
-
-        Objects.add(P1);
-        Objects.add(P2);
-        Objects.add(P3);
-        Objects.add(P4);
-        Objects.add(P5);*/
     }
 
     public void draw()
