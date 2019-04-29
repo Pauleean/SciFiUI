@@ -12,37 +12,36 @@ public class Scanner extends DisplayObject
         super(ui, size, x, y);
         this.percent = 0;
         this.planet = planet;
-        dispTime = 2;
+        dispTime = 1;
     }
 
     public void render()
     {
         ui.colorMode(UI.RGB);
+        ui.fill(0, 150 , 0);
         ui.noFill();
         ui.textAlign(UI.CENTER, UI.CENTER);
         ui.stroke(0, 150, 0);
-        ui.ellipse(pos.x, pos.y, 2.4f*size, 2.4f*size);
-        ui.fill(0, 150 , 0);
 
-        //draw crosshair
-        for(int i=0; i<4; i++)
-        {
-            float rote = UI.map(i, 0, 4, 0, 6.28f);
-            ui.line((float)(pos.x + (size * Math.sin(rote))), (float)(pos.y - (size * Math.cos(rote))), (float)(pos.x + (1.2f * (size * Math.sin(rote)))), (float)(pos.y - (1.2f * (size * Math.cos(rote)))));
-        }
-
-        //draw notches
-        for(int i=0; i<10; i++)
-        {
-            float rote = UI.map(i, -1, 10, 0, 1.57f);
-            ui.line((float)(pos.x + (1.2f * size * Math.sin(rote))), (float)(pos.y - (1.2f * size * Math.cos(rote))), (float)(pos.x + (1.1f * (size * Math.sin(rote)))), (float)(pos.y - (1.1f * (size * Math.cos(rote)))));
-        }
-        ui.noFill();
-
-        //draw status bar
         if(percent < 100)
         {
-            //ui.arc(x, y, size/2.0f, size/2.0f, 0.0f, UI.map(percent, 0.0f, 100.0f, 0.0f, 6.28f));
+            ui.ellipse(pos.x, pos.y, 2.4f*size, 2.4f*size);
+            //draw crosshair
+            for(int i=0; i<4; i++)
+            {
+                float rote = UI.map(i, 0, 4, 0, 6.28f);
+                ui.line((float)(pos.x + (size * Math.sin(rote))), (float)(pos.y - (size * Math.cos(rote))), (float)(pos.x + (1.2f * (size * Math.sin(rote)))), (float)(pos.y - (1.2f * (size * Math.cos(rote)))));
+            }
+
+            //draw notches
+            for(int i=0; i<10; i++)
+            {
+                float rote = UI.map(i, -1, 10, 0, 1.57f);
+                ui.line((float)(pos.x + (1.2f * size * Math.sin(rote))), (float)(pos.y - (1.2f * size * Math.cos(rote))), (float)(pos.x + (1.1f * (size * Math.sin(rote)))), (float)(pos.y - (1.1f * (size * Math.cos(rote)))));
+            }
+            ui.noFill();
+
+            //draw status bar
             for(int i=0; i<10; i++)
             {
                 float off = UI.map(i, 0, 10, size*2.2f, size*2.4f);
@@ -63,6 +62,7 @@ public class Scanner extends DisplayObject
         }
         else
         {
+            planet.setScaned(true);
             dispTime -= 1/60.0f;
         }
         if(dispTime <= 0) end();
