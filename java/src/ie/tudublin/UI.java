@@ -1,16 +1,14 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-import processing.core.PApplet;
 import processing.core.PVector;
 import processing.data.Table;
 import processing.data.TableRow;
 
-public class UI extends PApplet {
+public class UI extends AbsUI {
     Scanner scanner;
     Location location;
     boolean mouseDown;
-    ArrayList<DisplayObject> Objects = new ArrayList<DisplayObject>();
     ArrayList<Planet> Planets = new ArrayList<Planet>();
 
     boolean[] keys = new boolean[1024];

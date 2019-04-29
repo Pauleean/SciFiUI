@@ -2,13 +2,13 @@ package ie.tudublin;
 
 import processing.core.PVector;
 
-public class DisplayObject
+public abstract class DisplayObject
 {
-    protected UI ui;
+    protected AbsUI ui;
     protected float size;
     protected PVector pos = new PVector();
 
-    public DisplayObject(UI ui, float size, float x, float y)
+    public DisplayObject(AbsUI ui, float size, float x, float y)
     {
         this.ui = ui;
         this.size = size;
@@ -16,23 +16,21 @@ public class DisplayObject
         pos.y = y;
     }
 
-    public void render()
-    {}
+    public abstract void render();
 
-    public void update()
-    {}
+    public abstract void update();
 
     /**
      * @return the ui
      */
-    public UI getUi() {
+    public AbsUI getUi() {
         return ui;
     }
 
     /**
      * @param ui the ui to set
      */
-    public void setUi(UI ui) {
+    public void setUi(AbsUI ui) {
         this.ui = ui;
     }
 

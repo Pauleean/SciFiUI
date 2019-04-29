@@ -1,10 +1,9 @@
 package ie.tudublin;
 
-import processing.core.PApplet;
-
-public class OrbitalView extends PApplet
+public class OrbitalView extends AbsUI
 {
     Planet planet;
+    DeepScan scan;
 
     public OrbitalView(Planet planet)
     {
@@ -19,7 +18,10 @@ public class OrbitalView extends PApplet
     public void setup()
     {
         stroke(0, 150, 0);
+        fill(0, 150, 0);
         noFill();
+        scan = new DeepScan(this, 350, 0, 400, 450, 150, 100, 50);
+        textAlign(CENTER);
     }
 
     public void draw()
@@ -27,6 +29,10 @@ public class OrbitalView extends PApplet
         background(0);
         image(planet.getImg(), 150, 0, 350, 350);
         drawGrid(150, 0, 350, 12);
+
+        scan.render();
+        rect(400, 450, 100, 50);
+        
     }
 
     public void drawGrid(float x, float y, float len, float num)

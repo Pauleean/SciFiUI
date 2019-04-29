@@ -70,7 +70,7 @@ public class Scanner extends DisplayObject
 
     public void end()
     {
-        ui.scanComp(this);
+        ui.Objects.remove(this);
     }
 
     /**
