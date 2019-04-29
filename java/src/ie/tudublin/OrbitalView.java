@@ -20,7 +20,7 @@ public class OrbitalView extends AbsUI
         stroke(0, 150, 0);
         fill(0, 150, 0);
         noFill();
-        scan = new DeepScan(this, 350, 0, 400, 450, 150, 100, 50);
+        scan = new DeepScan(this, 150, 0, 400, 450, 350, 100, 50);
         textAlign(CENTER);
     }
 
@@ -31,13 +31,14 @@ public class OrbitalView extends AbsUI
         drawGrid(150, 0, 350, 12);
 
         scan.render();
-        rect(400, 450, 100, 50);
+        scan.update();
+        //rect(400, 450, 100, 50);
         
     }
 
     public void drawGrid(float x, float y, float len, float num)
     {
-        strokeWeight(2);
+        strokeWeight(3);
         rect(x, y, len, len);
         strokeWeight(1);
 
@@ -49,5 +50,10 @@ public class OrbitalView extends AbsUI
             line(X, y, X, y+len);
             line(x, Y, x+len, Y);
         }
+    }
+
+    public void mousePressed()
+    {
+        if(mouseX > 400 && mouseY > 450) scan.startScan();
     }
 }
