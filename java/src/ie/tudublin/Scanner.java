@@ -5,14 +5,13 @@ public class Scanner extends DisplayObject
     float time;
     float percent;
     float dispTime;
-    String mat;
-    boolean scan;
+    Planet planet;
 
-    public Scanner(UI ui, float size, float x, float y, String mat)
+    public Scanner(UI ui, float size, float x, float y, Planet planet)
     {
         super(ui, size, x, y);
         this.percent = 0;
-        this.mat = mat;
+        this.planet = planet;
         dispTime = 2;
     }
 
@@ -22,21 +21,21 @@ public class Scanner extends DisplayObject
         ui.noFill();
         ui.textAlign(UI.CENTER, UI.CENTER);
         ui.stroke(0, 150, 0);
-        ui.ellipse(pos.x, pos.y, 2*size, 2*size);
+        ui.ellipse(pos.x, pos.y, 2.4f*size, 2.4f*size);
         ui.fill(0, 150 , 0);
 
         //draw crosshair
         for(int i=0; i<4; i++)
         {
             float rote = UI.map(i, 0, 4, 0, 6.28f);
-            ui.line((float)(pos.x + (size * Math.sin(rote))), (float)(pos.y - (size * Math.cos(rote))), (float)(pos.x + (0.25f * (size * Math.sin(rote)))), (float)(pos.y - (0.25f * (size * Math.cos(rote)))));
+            ui.line((float)(pos.x + (size * Math.sin(rote))), (float)(pos.y - (size * Math.cos(rote))), (float)(pos.x + (1.2f * (size * Math.sin(rote)))), (float)(pos.y - (1.2f * (size * Math.cos(rote)))));
         }
 
         //draw notches
         for(int i=0; i<10; i++)
         {
             float rote = UI.map(i, -1, 10, 0, 1.57f);
-            ui.line((float)(pos.x + (size * Math.sin(rote))), (float)(pos.y - (size * Math.cos(rote))), (float)(pos.x + (0.9f * (size * Math.sin(rote)))), (float)(pos.y - (0.9f * (size * Math.cos(rote)))));
+            ui.line((float)(pos.x + (1.2f * size * Math.sin(rote))), (float)(pos.y - (1.2f * size * Math.cos(rote))), (float)(pos.x + (1.1f * (size * Math.sin(rote)))), (float)(pos.y - (1.1f * (size * Math.cos(rote)))));
         }
         ui.noFill();
 
@@ -46,13 +45,13 @@ public class Scanner extends DisplayObject
             //ui.arc(x, y, size/2.0f, size/2.0f, 0.0f, UI.map(percent, 0.0f, 100.0f, 0.0f, 6.28f));
             for(int i=0; i<10; i++)
             {
-                float off = UI.map(i, 0, 10, size*1.8f, size*2.0f);
+                float off = UI.map(i, 0, 10, size*2.2f, size*2.4f);
                 ui.arc(pos.x, pos.y, off, off, UI.map(percent, 0.0f, 100.0f, 0.0f, -1.57f), 0.0f);
             }
         }
         else
         {
-            ui.text(mat, pos.x, pos.y);
+            ui.text("Scan complete", pos.x, pos.y-(size+20));
         }
     }
 
@@ -117,30 +116,16 @@ public class Scanner extends DisplayObject
     }
 
     /**
-     * @return the mat
+     * @return the planet
      */
-    public String getMat() {
-        return mat;
+    public Planet getPlanet() {
+        return planet;
     }
 
     /**
-     * @param mat the mat to set
+     * @param planet the planet to set
      */
-    public void setMat(String mat) {
-        this.mat = mat;
-    }
-
-    /**
-     * @return the scan
-     */
-    public boolean isScan() {
-        return scan;
-    }
-
-    /**
-     * @param scan the scan to set
-     */
-    public void setScan(boolean scan) {
-        this.scan = scan;
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
     }
 }

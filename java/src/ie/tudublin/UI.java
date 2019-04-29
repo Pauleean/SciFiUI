@@ -79,7 +79,7 @@ public class UI extends PApplet {
             float rad = planet.getSize()/2.0f;
             if(mouseX > pos.x && mouseX < pos.x+(2*rad) && mouseY > pos.y && mouseY < pos.y+(2*rad))
             {
-                Scanner scanner = new Scanner(this, 100, pos.x+rad, pos.y+rad, "Iron");
+                Scanner scanner = new Scanner(this, rad, pos.x+rad, pos.y+rad, planet);
                 Objects.add(scanner);
             }
         }
