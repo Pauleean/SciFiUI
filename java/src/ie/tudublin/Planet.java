@@ -74,10 +74,10 @@ public class Planet extends DisplayObject
     {
         ui2.image(getImg(), x, y, w, w);
         ui2.rect(x, y+w, 250, 100);
-        ui2.textSize(20);
+        ui2.textSize(28);
         ui2.text(name, x+125, y+w+50);
 
-        ui2.textSize(10);
+        ui2.textSize(12);
         ui2.text("No technology detected.", x+125, y+w+125);
 
         float offset = ui2.height/8.0f;
