@@ -18,6 +18,8 @@ public class Planet extends DisplayObject
     float water;
     float counter;
     boolean scanning;
+    boolean deepScaned;
+    AbsUI ui2;
 
     public Planet(UI ui, TableRow data)
     {
@@ -34,7 +36,9 @@ public class Planet extends DisplayObject
         img = ui.loadImage(data.getString("Image"));
         scaned = false;
         scanning = false;
+        deepScaned = false;
         counter = 0;
+        ui2 = null;
     }
 
     public void render()
@@ -63,6 +67,50 @@ public class Planet extends DisplayObject
         if(counter >= 5)
         {
             ui.text("Uranium: " + uranium + "%", pos.x - 10, pos.y + (4*offset));
+        }
+    }
+
+    public void renderOrbit(float x, float y, float w)
+    {
+        ui2.image(getImg(), x, y, w, w);
+
+        float offset = ui2.height/8.0f;
+
+        ui2.strokeWeight(2);
+        for(int i=0; i<8; i++)
+        {
+            ui2.rect(0, i*offset, x, offset);
+        }
+        float pos = offset/2.0f;
+
+        ui2.text("Mass: " + mass + "M☉", x/2.0f, pos);
+        pos += offset;
+        ui2.text("Iron: " + iron + "%", x/2.0f, pos);
+        pos += offset;
+        ui2.text("Gold: " + gold + "%", x/2.0f, pos);
+        pos += offset;
+        ui2.text("Uranium: " + uranium + "%", x/2.0f, pos);
+        pos += offset;
+
+        if(deepScaned)
+        {
+            ui2.text("Water: " + water + "%", x/2.0f, pos);
+            pos += offset;
+            ui2.text("Tempureture: " + temp + "K", x/2.0f, pos);
+            pos += offset;
+            ui2.text("Life signs: " + life, x/2.0f, pos);
+            pos += offset;
+            ui2.text("Atmosphere: " + atmosphere, x/2.0f, pos);
+        }
+        else
+        {
+            ui2.text("Water: ???", x/2.0f, pos);
+            pos += offset;
+            ui2.text("Tempureture: ???", x/2.0f, pos);
+            pos += offset;
+            ui2.text("Life signs: ???", x/2.0f, pos);
+            pos += offset;
+            ui2.text("Atmosphere: ???", x/2.0f, pos);
         }
     }
 
@@ -261,5 +309,33 @@ public class Planet extends DisplayObject
      */
     public void setScanning(boolean scanning) {
         this.scanning = scanning;
+    }
+
+    /**
+     * @return the deepScaned
+     */
+    public boolean isDeepScaned() {
+        return deepScaned;
+    }
+
+    /**
+     * @param deepScaned the deepScaned to set
+     */
+    public void setDeepScaned(boolean deepScaned) {
+        this.deepScaned = deepScaned;
+    }
+
+    /**
+     * @return the ui2
+     */
+    public AbsUI getUi2() {
+        return ui2;
+    }
+
+    /**
+     * @param ui2 the ui2 to set
+     */
+    public void setUi2(AbsUI ui2) {
+        this.ui2 = ui2;
     }
 }

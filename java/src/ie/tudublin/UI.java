@@ -84,7 +84,7 @@ public class UI extends AbsUI {
                     Objects.add(scanner);
                 }
 
-                if(planet.isScaned())
+                if(planet.isScaned() && planet.getUi2() == null)
                 {
                     String[] a = {"UI"};
                     processing.core.PApplet.runSketch(a, new OrbitalView(planet));

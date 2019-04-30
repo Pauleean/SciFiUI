@@ -22,13 +22,19 @@ public class OrbitalView extends AbsUI
         noFill();
         scan = new DeepScan(this, 150, 0, 400, 450, 350, 100, 50);
         textAlign(CENTER);
+        planet.setUi2(this);
     }
 
     public void draw()
     {
         background(0);
-        image(planet.getImg(), 150, 0, 350, 350);
+        planet.renderOrbit(150, 0, 350);
         drawGrid(150, 0, 350, 12);
+
+        if(scan.isScanned())
+        {
+            planet.setDeepScaned(true);
+        }
 
         scan.render();
         scan.update();
@@ -55,5 +61,33 @@ public class OrbitalView extends AbsUI
     public void mousePressed()
     {
         if(mouseX > 400 && mouseY > 450) scan.startScan();
+    }
+
+    /**
+     * @return the planet
+     */
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    /**
+     * @param planet the planet to set
+     */
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
+
+    /**
+     * @return the scan
+     */
+    public DeepScan getScan() {
+        return scan;
+    }
+
+    /**
+     * @param scan the scan to set
+     */
+    public void setScan(DeepScan scan) {
+        this.scan = scan;
     }
 }
