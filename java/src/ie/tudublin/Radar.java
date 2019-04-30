@@ -8,9 +8,9 @@ public class Radar
     private float height;
     private float rotationSpeed;
     private float rotation;
-    private UI ui;
+    private AbsUI ui;
 
-    public Radar(UI ui, float x, float y, float width, float height, float rotationSpeed, float rotation)
+    public Radar(AbsUI ui, float x, float y, float width, float height, float rotationSpeed, float rotation)
     {
         this.ui = ui;
         this.x = x;
@@ -26,7 +26,6 @@ public class Radar
     {
         float wRad = width/2.0f;
         float hRad = height/2.0f;
-        ui.stroke(255);
         ui.noFill();
         ui.ellipse(x, y, width, height);
         ui.line(x, y, x + (wRad * (float)Math.sin(rotation)), y - (hRad * (float)Math.cos(rotation)));
@@ -125,14 +124,14 @@ public class Radar
     /**
      * @return the ui
      */
-    public UI getUi() {
+    public AbsUI getUi() {
         return ui;
     }
 
     /**
      * @param ui the ui to set
      */
-    public void setUi(UI ui) {
+    public void setUi(AbsUI ui) {
         this.ui = ui;
     }
 }

@@ -4,6 +4,7 @@ public class OrbitalView extends AbsUI
 {
     Planet planet;
     DeepScan scan;
+    Radar radar;
 
     public OrbitalView(Planet planet)
     {
@@ -23,6 +24,7 @@ public class OrbitalView extends AbsUI
         scan = new DeepScan(this, 150, 0, 400, 450, 350, 100, 50);
         textAlign(CENTER);
         planet.setUi2(this);
+        radar = new Radar(this, 450, 400, 80, 80, 0.1f, 0);
     }
 
     public void draw()
@@ -31,15 +33,14 @@ public class OrbitalView extends AbsUI
         planet.renderOrbit(150, 0, 350);
         drawGrid(150, 0, 350, 12);
 
+        scan.render();
+        scan.update();
         if(scan.isScanned())
         {
             planet.setDeepScaned(true);
         }
-
-        scan.render();
-        scan.update();
-        //rect(400, 450, 100, 50);
-        
+        radar.render();
+        radar.update();
     }
 
     public void drawGrid(float x, float y, float len, float num)
