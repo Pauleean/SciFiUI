@@ -24,9 +24,11 @@ public class DeepScan extends DisplayObject
 
     public void render()
     {
+        //Render rectangle around deep scan button
         ui.strokeWeight(2);
         ui.rect(scanX, scanY, scanLen, scanHeight);
 
+        //Render text based on if deep scan was/is/wasn't run
         if(count == 5)
         {
             ui.text("Deep scan", scanX + (scanLen/2.0f), scanY + (scanHeight/2.0f));
@@ -35,6 +37,7 @@ public class DeepScan extends DisplayObject
         {
             if(count > 0)
             {
+                //Display scaning bar
                 ui.strokeWeight(4);
                 ui.stroke(150, 0, 0);
                 float Y = UI.map(count, 5, 0, pos.y, pos.y+size);
@@ -59,6 +62,7 @@ public class DeepScan extends DisplayObject
         }
     }
 
+    //start scan
     public void startScan()
     {
         scanning = true;

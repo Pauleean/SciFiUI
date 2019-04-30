@@ -41,10 +41,13 @@ public class Planet extends DisplayObject
         ui2 = null;
     }
 
+    //Render Planet to main ui
     public void render()
     {
+        //Render image of planet
         ui.image(img, pos.x, pos.y, size, size);
 
+        //Display Planet fields if planet was scanned
         float offset = size/5.0f;
         ui.textAlign(UI.CENTER);
         if(counter >= 1)
@@ -70,8 +73,10 @@ public class Planet extends DisplayObject
         }
     }
 
+    //Display planet to single planet ui
     public void renderOrbit(float x, float y, float w)
     {
+        //Render Planet image and name
         ui2.image(getImg(), x, y, w, w);
         ui2.rect(x, y+w, 250, 100);
         ui2.textSize(28);
@@ -80,8 +85,8 @@ public class Planet extends DisplayObject
         ui2.textSize(12);
         ui2.text("No technology detected.", x+125, y+w+125);
 
+        //Render rectangles for Planet fields
         float offset = ui2.height/8.0f;
-
         ui2.strokeWeight(2);
         for(int i=0; i<8; i++)
         {
@@ -89,6 +94,7 @@ public class Planet extends DisplayObject
         }
         float pos = offset/2.0f;
 
+        //Display Planet fields
         ui2.text("Mass: " + mass + "M☉", x/2.0f, pos);
         pos += offset;
         ui2.text("Iron: " + iron + "%", x/2.0f, pos);
@@ -98,6 +104,7 @@ public class Planet extends DisplayObject
         ui2.text("Uranium: " + uranium + "%", x/2.0f, pos);
         pos += offset;
 
+        //Check if DeepScan has been completed 
         if(deepScaned)
         {
             ui2.text("Water: " + water + "%", x/2.0f, pos);

@@ -10,6 +10,7 @@ public class Radar
     private float rotation;
     private AbsUI ui;
 
+    //Constructer
     public Radar(AbsUI ui, float x, float y, float width, float height, float rotationSpeed, float rotation)
     {
         this.ui = ui;
@@ -21,9 +22,10 @@ public class Radar
         this.rotation = rotation;
     }
 
-
+    //Display radar to ui
     public void render()
     {
+        ui.strokeWeight(1);
         float wRad = width/2.0f;
         float hRad = height/2.0f;
         ui.noFill();
@@ -31,6 +33,7 @@ public class Radar
         ui.line(x, y, x + (wRad * (float)Math.sin(rotation)), y - (hRad * (float)Math.cos(rotation)));
     }
 
+    //update radar
     public void update()
     {
         rotation = (rotation + rotationSpeed) % 6.28f;

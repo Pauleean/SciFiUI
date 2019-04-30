@@ -29,16 +29,19 @@ public class OrbitalView extends AbsUI
 
     public void draw()
     {
+        //Render Planet and grid
         background(0);
         planet.renderOrbit(150, 0, 350);
         drawGrid(150, 0, 350, 12);
 
+        //Render DeepScan button and scanner 
         scan.render();
         scan.update();
         if(scan.isScanned())
         {
             planet.setDeepScaned(true);
         }
+        //Render radar
         radar.render();
         radar.update();
     }
@@ -49,6 +52,7 @@ public class OrbitalView extends AbsUI
         rect(x, y, len, len);
         strokeWeight(1);
 
+        //Draw grid lines
         for(int i = 0; i < 12; i++)
         {
             float X = map(i, 0, num, x, x+len);
@@ -61,6 +65,7 @@ public class OrbitalView extends AbsUI
 
     public void mousePressed()
     {
+        //Check if Deep scan was clicked
         if(mouseX > 400 && mouseY > 450) scan.startScan();
     }
 
